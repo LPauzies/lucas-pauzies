@@ -86,3 +86,6 @@ jobs:
         with:
           branch: gh-pages
           folder: dist
+          target-folder: docs
+          single-commit: true
+      
