@@ -30,24 +30,8 @@ jobs:
       - name: Lint
         run: npm run lint
 
-  test:
-    name: "Test"
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: 12.x
-          cache: npm
-      - name: Install Dependencies
-        run: npm ci
-      - name: Run Tests
-        run: npm test
-
   build:
-    needs: [test]
+    needs: [lint]
     name: "Build"
     runs-on: ubuntu-latest
 
@@ -66,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: build-artifact
-          path: dist
+          path: public
 
   deploy:
     needs: [build]
@@ -80,11 +64,11 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-artifact
-          path: dist
+          path: public
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4.3.0
         with:
           branch: gh-pages
-          folder: dist
+          folder: public
           single-commit: true
       
