@@ -7,6 +7,9 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
   ],
+  rules: {
+    "@typescript-eslint/no-inferrable-types": "off",
+  },
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: "module",
