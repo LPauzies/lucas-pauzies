@@ -2,6 +2,6 @@
 /public/build/
 
 .DS_Store
+.vscode/
 
-# The canvas of the website
 CANVAS/
