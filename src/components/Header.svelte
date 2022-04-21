@@ -1,10 +1,51 @@
 <script lang="ts">
-    let pinLabel: string = "Pin";
-    let watchLabel: string = "Watch";
-    let starLabel: string = "Star";
-    let watchCounter: number = 0;
-    let forkCounter: number = 0;
-    let starCounter: number = 0;
+    let pinLabel: string = "Pin"
+    let pinPin: string = "Pin"
+    let pinUnpin: string = "Unpin"
+
+    let watchLabel: string = "Watch"
+    let watchWatch: string = "Watch"
+    let watchUnwatch: string = "Unwatch"
+    let watchComment: string = "Will you watch this project ?"
+    let watchCommentNotWatch: string = "Will you watch this project ?"
+    let watchCommentWatched: string = "You watch this 😄"
+    let watchCounter: number = 0
+
+    let forkCounter: number = 0
+
+    let starLabel: string = "Star"
+    let starStar: string = "Star"
+    let starStarred: string = "Starred"
+    let starCounter: number = 0
+
+    const clickPin = () => pinLabel = (pinLabel === pinPin) ? pinUnpin : pinPin
+
+    const clickWatch = () => {
+        if (watchComment === watchCommentNotWatch) {
+            watchCounter++
+            watchLabel = watchUnwatch
+            watchComment = watchCommentWatched
+        } else {
+            watchCounter--
+            watchLabel = watchWatch
+            watchComment = watchCommentNotWatch
+        }
+    }
+
+    const goToFork = () => {
+        window.open("https://github.com/LPauzies/lucas-pauzies/fork")
+        forkCounter++
+    }
+
+    const clickStar = () => {
+        if (starLabel === starStar) {
+            starLabel = starStarred
+            starCounter++
+        } else {
+            starLabel = starStar
+            starCounter--
+        }
+    }
 </script>
 
 <main>
@@ -28,7 +69,7 @@
             </div>
             <ul class="pagehead-actions flex-shrink-0 d-none d-md-inline" style="padding: 2px;">
                 <li>
-                    <div class="float-left">
+                    <div class="float-left" on:click={clickPin}>
                         <button title="Try to pin this" class="btn-sm btn">  
                             <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon icon octicon-pin mr-2">
                                 <path fill-rule="evenodd" d="M4.456.734a1.75 1.75 0 012.826.504l.613 1.327a3.081 3.081 0 002.084 1.707l2.454.584c1.332.317 1.8 1.972.832 2.94L11.06 10l3.72 3.72a.75.75 0 11-1.061 1.06L10 11.06l-2.204 2.205c-.968.968-2.623.5-2.94-.832l-.584-2.454a3.081 3.081 0 00-1.707-2.084l-1.327-.613a1.75 1.75 0 01-.504-2.826L4.456.734zM5.92 1.866a.25.25 0 00-.404-.072L1.794 5.516a.25.25 0 00.072.404l1.328.613A4.582 4.582 0 015.73 9.63l.584 2.454a.25.25 0 00.42.12l5.47-5.47a.25.25 0 00-.12-.42L9.63 5.73a4.581 4.581 0 01-3.098-2.537L5.92 1.866z"></path>
@@ -49,14 +90,14 @@
                               <div class="dropdown-caret"></div>
                             </summary>
                         
-                            <ul class="dropdown-menu dropdown-menu-se">
-                              <li class="dropdown-item">Nice watched 😄</li>
+                            <ul class="dropdown-menu dropdown-menu-se" on:click={clickWatch}>
+                              <li class="dropdown-item">{ watchComment }</li>
                             </ul>
                           </details>
                     </div>
                 </li>
                 <li>
-                    <div class="float-left">
+                    <div class="float-left" on:click={goToFork}>
                         <button title="Try to fork this" class="btn-sm btn">  
                             <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon icon octicon-repo-forked mr-2">
                                 <path fill-rule="evenodd" d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
@@ -67,25 +108,22 @@
                     </div>
                 </li>
                 <li>
-                    <div class="float-left">
-                        <button title="Try star this" class="btn-sm btn rounded-left-2 border-right-0 BtnGroup-item">
-                            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star-fill starred-button-icon d-inline-block mr-2">
-                                <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
-                            </svg>
+                    <div class="float-left" on:click={clickStar}>
+                        <button title="Try to star this" class="btn-sm btn">
+                                {#if starLabel == starStar}
+                                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star d-inline-block mr-2">
+                                        <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"></path>
+                                    </svg>
+                                {:else}
+                                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star d-inline-block mr-2" style="color: #E3B341">
+                                        <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
+                                    </svg>
+                                {/if}
                             <span data-view-component="true" class="d-inline">
                                 { starLabel }
                             </span>
                             <span class="Counter">{ starCounter }</span>
                         </button>
-                        <details class="details-reset details-overlay BtnGroup-parent js-user-list-menu d-inline-block position-relative">
-                            <summary title="Try to pin this" class="btn-sm btn BtnGroup-item px-2 float-none" aria-haspopup="true">
-                              <div class="dropdown-caret"></div>
-                            </summary>
-                        
-                            <ul class="dropdown-menu dropdown-menu-sw">
-                              <li class="dropdown-item">Nice starred 😄</li>
-                            </ul>
-                          </details>
                     </div>
                 </li>
             </ul>
@@ -141,6 +179,11 @@
         background-color: $color-button-background-hover;
     }
 
+    .Label--secondary {
+        color: $color-icon !important;
+        border-color: $color-icon !important;
+    }
+
     .pagehead-actions > li {
         float: left;
         margin: 0 8px 0 0;
@@ -150,7 +193,7 @@
     }
 
     .icon {
-        color: $color-label;
+        color: $color-icon;
     }
 
     .dropdown-menu {
@@ -160,5 +203,7 @@
 
     .dropdown-item {
         color: $color-label !important;
+        cursor: pointer;
+        white-space: normal !important;
     }
 </style>
