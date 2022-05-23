@@ -19,12 +19,7 @@
   >
     <ul data-view-component="true" class="UnderlineNav-body list-style-none">
       <li data-view-component="true" class="d-inline-flex">
-        <a
-          id="code-tab"
-          class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item"
-          href="https://github.com/LPauzies/lucas-pauzies"
-          target="_blank"
-        >
+        <a id="code-tab" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item" href="https://github.com/LPauzies/lucas-pauzies" target="_blank">
           <svg
             aria-hidden="true"
             height="16"
@@ -43,12 +38,7 @@
         </a>
       </li>
       <li data-view-component="true" class="d-inline-flex">
-        <a
-        id="issues-tab"
-        class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item"
-        href="https://github.com/LPauzies/lucas-pauzies/issues"
-        target="_blank"
-        >
+        <a id="issues-tab" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item" href="https://github.com/LPauzies/lucas-pauzies/issues" target="_blank">
             <svg
                 aria-hidden="true"
                 height="16"
@@ -68,12 +58,7 @@
         </a>
       </li>
       <li data-view-component="true" class="d-inline-flex">
-        <a
-          id="pull-requests-tab"
-          class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item"
-          href="https://github.com/LPauzies/lucas-pauzies/pulls"
-          target="_blank"
-        >
+        <a id="pull-requests-tab" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item" href="https://github.com/LPauzies/lucas-pauzies/pulls" target="_blank">
           <svg
             aria-hidden="true"
             height="16"
@@ -92,10 +77,7 @@
         </a>
       </li>
       <li data-view-component="true" class="d-inline-flex">
-        <a
-          id="actions-tab"
-          class="UnderlineNav-item selected no-wrap js-responsive-underlinenav-item js-selected-navigation-item"
-        >
+        <a id="actions-tab" class="UnderlineNav-item selected no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
           <svg
             aria-hidden="true"
             height="16"
@@ -114,12 +96,7 @@
         </a>
       </li>
       <li data-view-component="true" class="d-inline-flex">
-        <a
-          id="projects-tab"
-          class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item"
-          href="https://github.com/LPauzies/lucas-pauzies/projects?type=beta":
-          target="_blank"
-        >
+        <a id="projects-tab" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item" href="https://github.com/LPauzies/lucas-pauzies/projects?type=beta" target="_blank">
           <svg
             aria-hidden="true"
             height="16"
@@ -138,12 +115,7 @@
         </a>
       </li>
       <li data-view-component="true" class="d-inline-flex">
-        <a
-          id="wiki-tab"
-          class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item"
-          href="https://github.com/LPauzies/lucas-pauzies"
-          target="_blank"
-        >
+        <a id="wiki-tab" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item" href="https://github.com/LPauzies/lucas-pauzies" target="_blank">
           <svg
             aria-hidden="true"
             height="16"
@@ -162,12 +134,7 @@
         </a>
       </li>
       <li data-view-component="true" class="d-inline-flex">
-        <a
-          id="security-tab"
-          class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item"
-          href="https://github.com/LPauzies/lucas-pauzies/security"
-          target="_blank"
-        >
+        <a id="security-tab" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item" href="https://github.com/LPauzies/lucas-pauzies/security" target="_blank">
           <svg
             aria-hidden="true"
             height="16"
@@ -186,12 +153,7 @@
         </a>
       </li>
       <li data-view-component="true" class="d-inline-flex">
-        <a
-          id="insights-tab"
-          class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item"
-          href="https://github.com/LPauzies/lucas-pauzies/pulse"
-          target="_blank"
-        >
+        <a id="insights-tab" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item" href="https://github.com/LPauzies/lucas-pauzies/pulse" target="_blank">
           <svg
             aria-hidden="true"
             height="16"
@@ -210,10 +172,7 @@
         </a>
       </li>
       <li data-view-component="true" class="d-inline-flex" on:click={clickSettings}>
-        <a
-          id="settings-tab"
-          class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item"
-        >
+        <a id="settings-tab" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
           <svg
             aria-hidden="true"
             height="16"
@@ -242,7 +201,7 @@
         box-sizing: border-box;
     }
 
-    a, button, [role=button], input[type=radio], input[type=checkbox] {
+    a, button {
         transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
         transition-property: color,background-color,box-shadow,border-color;
         text-decoration: none;
@@ -281,14 +240,14 @@
         align-items: center;
     }
 
-    .UnderlineNav-item.selected, .UnderlineNav-item[role=tab][aria-selected=true], .UnderlineNav-item[aria-current]:not([aria-current=false]){
+    .UnderlineNav-item.selected {
         font-weight: 600;
         color: $color-label;
         border-bottom-color: $color-selected;
         outline-offset: -8px;
     }
 
-    .UnderlineNav-item.selected::after, .UnderlineNav-item[role=tab][aria-selected=true]::after, .UnderlineNav-item[aria-current]:not([aria-current=false])::after {
+    .UnderlineNav-item.selected::after {
         position: absolute;
         right: 50%;
         bottom: calc(50% - 25px);
